@@ -100,4 +100,7 @@ disasm:	main.elf
 
 cpp:
 	$(COMPILE) -E main.c
-	
+
+.PHONY: test
+test:
+	cd test && $(MAKE) test
