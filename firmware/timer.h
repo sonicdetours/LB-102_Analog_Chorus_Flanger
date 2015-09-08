@@ -13,7 +13,7 @@
 //
 // -----------------------------------------------------------------------------
 //
-// A basic LFO.
+// Timer calculations for BBD clock.
 //
 #ifndef TIMER_H_
 #define TIMER_H_
