@@ -18,9 +18,7 @@
 #ifndef LFO_H_
 #define LFO_H_
 
-#define DISALLOW_COPY_AND_ASSIGN(TypeName) \
-  TypeName(const TypeName&);               \
-  void operator=(const TypeName&)
+#include "base.h"
 
 enum LfoShape {
   LFO_SQUARE_WAVE,
@@ -97,7 +95,5 @@ class Lfo {
 
   DISALLOW_COPY_AND_ASSIGN(Lfo);
 };
-
-extern Lfo lfo;
 
 #endif
