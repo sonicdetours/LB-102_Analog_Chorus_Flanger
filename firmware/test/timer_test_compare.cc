@@ -13,7 +13,7 @@
 
 #include "gtest/gtest.h"
 #include "timer_test.h"
-#include "../timer.h"
+#include "nm-102/timer.h"
 
 TEST_F(TimerTest, compare_min_delay) {
   timer.set_delay(0);

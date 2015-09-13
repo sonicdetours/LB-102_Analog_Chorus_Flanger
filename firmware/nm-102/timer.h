@@ -24,7 +24,7 @@ enum TimerPrescaler {
   Prescaler_256
 };
 
-#include "base.h"
+#include "avrlib/base.h"
 
 // Assuming 20 MHz clock speed
 

@@ -18,7 +18,7 @@
 #ifndef LFO_H_
 #define LFO_H_
 
-#include "base.h"
+#include "avrlib/base.h"
 
 enum LfoShape {
   LFO_SQUARE_WAVE,

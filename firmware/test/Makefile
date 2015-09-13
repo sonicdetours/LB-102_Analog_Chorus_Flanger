@@ -21,11 +21,13 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
 
 CPPFLAGS += -isystem $(GTEST_DIR)/include
-CXXFLAGS += -g -Wall -Wextra -pthread
+CXXFLAGS += -g -I../ -Wall -Wextra -pthread
 
-TESTS = nm102_test_runner
+TESTS = $(OBJ_DIR)nm102_test_runner
 
 OBJ_DIR = obj/
+
+
 
 # Phoney targets
 

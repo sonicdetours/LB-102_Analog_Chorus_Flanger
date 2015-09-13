@@ -13,9 +13,32 @@
 //
 // -----------------------------------------------------------------------------
 //
-// Macros and global otehr global stuff
+// NM-102 main program
 //
-#define DISALLOW_COPY_AND_ASSIGN(TypeName) \
-  TypeName(const TypeName&);               \
-  void operator=(const TypeName&)
+#include "avrlib/gpio.h"
+#include "avrlib/boot.h"
+#include "avrlib/time.h"
 
+#include "lfo.h"
+#include "timer.h"
+
+using namespace avrlib;
+
+NumberedGpio<13> led;
+Lfo lfo;
+
+TIMER_0_TICK {
+  TickSystemClock();
+}
+
+int main(void) {
+  Boot(true);
+  lfo.Update();
+  led.set_mode(DIGITAL_OUTPUT);
+  while (1) {
+    led.High();
+    Delay(250);
+    led.Low();
+    Delay(250);
+  }
+}

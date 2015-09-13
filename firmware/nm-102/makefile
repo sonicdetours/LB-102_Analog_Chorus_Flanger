@@ -10,7 +10,19 @@
 # GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
- 
-include nm-102/makefile
 
-FIRMWARE      = $(BUILD_DIR)nm-102.hex
+VERSION        = 0.01
+MCU_NAME       = 328
+TARGET         = nm-102
+PACKAGES       = avrlib avrlib/devices nm-102
+RESOURCES      = nm-102/resources
+# EXTRA_DEFINES  = -DDISABLE_DEFAULT_UART_RX_ISR
+
+LOCK           = 2f
+LFUSE          = ff
+HFUSE          = d7
+EFUSE          = fd
+
+include avrlib/makefile.mk
+
+include $(DEP_FILE)

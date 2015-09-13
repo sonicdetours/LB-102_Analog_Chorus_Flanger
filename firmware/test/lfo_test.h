@@ -15,7 +15,7 @@
 #define LFO_TEST_H_
 
 #include "gtest/gtest.h"
-#include "../lfo.h"
+#include "nm-102/lfo.h"
 
 class LfoTest : public ::testing::Test {
  protected:

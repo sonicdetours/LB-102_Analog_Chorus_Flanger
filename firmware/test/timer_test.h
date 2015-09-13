@@ -15,7 +15,7 @@
 #define TIMER_TEST_H_
 
 #include "gtest/gtest.h"
-#include "../timer.h"
+#include "nm-102/timer.h"
 
 class TimerTest : public ::testing::Test {
  protected:
