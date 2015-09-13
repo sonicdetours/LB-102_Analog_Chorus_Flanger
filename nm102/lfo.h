@@ -20,6 +20,8 @@
 
 #include "avrlib/base.h"
 
+namespace nm102 {
+
 enum LfoShape {
   LFO_SQUARE_WAVE,
   LFO_RAMP_DOWN,
@@ -95,5 +97,8 @@ class Lfo {
 
   DISALLOW_COPY_AND_ASSIGN(Lfo);
 };
+
+}  // namespace nm102
+
 
 #endif

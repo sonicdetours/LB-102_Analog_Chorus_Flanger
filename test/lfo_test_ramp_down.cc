@@ -15,6 +15,7 @@
 #include "lfo_test.h"
 #include "nm-102/lfo.h"
 
+using namespace nm102;
 
 // 255 -  *  
 //          * 

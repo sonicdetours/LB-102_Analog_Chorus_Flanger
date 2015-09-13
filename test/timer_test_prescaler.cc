@@ -15,6 +15,8 @@
 #include "timer_test.h"
 #include "nm-102/timer.h"
 
+using namespace nm102;
+
 TEST_F(TimerTest, calculate_prescaler_min_delay) {
   timer.set_delay(0);
   EXPECT_EQ(Prescaler_8, timer.prescaler());

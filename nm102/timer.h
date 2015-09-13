@@ -26,6 +26,8 @@ enum TimerPrescaler {
 
 #include "avrlib/base.h"
 
+namespace nm102 {
+
 // Assuming 20 MHz clock speed
 
 class Timer {
@@ -62,5 +64,7 @@ class Timer {
   uint8_t prescaler_;
   uint8_t compare_;
 };
+
+} // namespace nm102
 
 #endif

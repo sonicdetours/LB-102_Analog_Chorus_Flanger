@@ -15,6 +15,8 @@
 #include "timer_test.h"
 #include "nm-102/timer.h"
 
+using namespace nm102;
+
 TEST_F(TimerTest, compare_min_delay) {
   timer.set_delay(0);
   EXPECT_EQ(45, timer.compare());

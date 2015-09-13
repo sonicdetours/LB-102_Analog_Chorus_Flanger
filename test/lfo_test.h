@@ -17,6 +17,8 @@
 #include "gtest/gtest.h"
 #include "nm-102/lfo.h"
 
+using namespace nm102;
+
 class LfoTest : public ::testing::Test {
  protected:
   Lfo lfo;

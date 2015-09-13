@@ -11,6 +11,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
-include nm-102/makefile
+include nm102/makefile
 
-FIRMWARE      = $(BUILD_DIR)nm-102.hex
+FIRMWARE      = $(BUILD_DIR)nm102.hex

@@ -13,9 +13,9 @@
 
 VERSION        = 0.01
 MCU_NAME       = 328
-TARGET         = nm-102
-PACKAGES       = avrlib avrlib/devices nm-102
-RESOURCES      = nm-102/resources
+TARGET         = nm102
+PACKAGES       = avrlib avrlib/devices nm102
+RESOURCES      = nm102/resources
 # EXTRA_DEFINES  = -DDISABLE_DEFAULT_UART_RX_ISR
 
 LOCK           = 2f

@@ -23,6 +23,7 @@
 #include "timer.h"
 
 using namespace avrlib;
+using namespace nm102;
 
 NumberedGpio<13> led;
 Lfo lfo;

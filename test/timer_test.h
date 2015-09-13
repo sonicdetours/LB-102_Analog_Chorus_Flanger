@@ -17,6 +17,8 @@
 #include "gtest/gtest.h"
 #include "nm-102/timer.h"
 
+using namespace nm102;
+
 class TimerTest : public ::testing::Test {
  protected:
   Timer timer;
