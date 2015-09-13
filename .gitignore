@@ -69,3 +69,5 @@ eagle.epf
 *.elf
 *.hex
 *_test_runner
+
+build/*

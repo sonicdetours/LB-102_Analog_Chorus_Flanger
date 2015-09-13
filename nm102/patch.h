@@ -13,35 +13,31 @@
 //
 // -----------------------------------------------------------------------------
 //
-// NM-102 main program
+// Patch data.
 //
-#include "avrlib/gpio.h"
-#include "avrlib/boot.h"
-#include "avrlib/time.h"
+#ifndef NM102_PATCH_H_
+#define NM102_PATCH_H_
 
-#include "lfo.h"
-#include "timer.h"
-#include "patch.h"
+#include "avrlib/base.h"
 
-using namespace avrlib;
-using namespace nm102;
+namespace nm102 {
 
-NumberedGpio<13> led;
-Lfo lfo;
-Patch patch;
+const uint8_t kPatchNameSize = 8;
 
-TIMER_0_TICK {
-  TickSystemClock();
-}
+// #define PATCH_SIZE (sizeof(Patch) - 8)
 
-int main(void) {
-  Boot(true);
-  lfo.Update();
-  led.set_mode(DIGITAL_OUTPUT);
-  while (1) {
-    led.High();
-    Delay(250);
-    led.Low();
-    Delay(250);
-  }
-}
+class Patch {
+ public:
+  uint16_t rate;
+  uint16_t depth;
+  uint16_t mix;
+
+  uint8_t shape;
+
+  uint8_t name[kPatchNameSize];
+  uint8_t version;
+};
+
+}  // namespace nm102
+
+#endif
