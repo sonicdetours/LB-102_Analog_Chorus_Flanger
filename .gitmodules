@@ -1,3 +1,0 @@
-[submodule "firmware/avrlib"]
-	path = firmware/avrlib
-	url = git://github.com/pichenettes/avril.git
