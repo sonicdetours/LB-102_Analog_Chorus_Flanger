@@ -15,8 +15,8 @@
 //
 // Timer calculations for BBD clock.
 //
-#ifndef TIMER_H_
-#define TIMER_H_
+#ifndef NM102_TIMER_H_
+#define NM102_TIMER_H_
 
 enum TimerPrescaler {
   Prescaler_8,

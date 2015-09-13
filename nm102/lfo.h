@@ -15,8 +15,8 @@
 //
 // A basic LFO.
 //
-#ifndef LFO_H_
-#define LFO_H_
+#ifndef NM102_LFO_H_
+#define NM102_LFO_H_
 
 #include "avrlib/base.h"
 
@@ -99,6 +99,5 @@ class Lfo {
 };
 
 }  // namespace nm102
-
 
 #endif
