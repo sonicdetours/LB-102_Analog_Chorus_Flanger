@@ -28,11 +28,10 @@ const uint8_t kPatchNameSize = 8;
 
 class Patch {
  public:
-  uint16_t rate;
-  uint16_t depth;
-  uint16_t mix;
-
+  uint8_t rate;
+  uint8_t depth;
   uint8_t shape;
+  uint8_t bass_boost;
 
   uint8_t name[kPatchNameSize];
   uint8_t version;

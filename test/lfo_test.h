@@ -15,7 +15,7 @@
 #define LFO_TEST_H_
 
 #include "gtest/gtest.h"
-#include "nm-102/lfo.h"
+#include "nm102/lfo.h"
 
 using namespace nm102;
 

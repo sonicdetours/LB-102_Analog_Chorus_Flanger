@@ -15,33 +15,44 @@
 //
 // NM-102 main program
 //
+#include <avr/io.h>
+#include <util/delay.h>
+
 #include "avrlib/gpio.h"
 #include "avrlib/boot.h"
 #include "avrlib/time.h"
 
-#include "lfo.h"
-#include "timer.h"
-#include "patch.h"
+#include "Lfo.h"
 
 using namespace avrlib;
 using namespace nm102;
 
-NumberedGpio<13> led;
+NumberedGpio<9> lfoPin;
 Lfo lfo;
-Patch patch;
+
 
 TIMER_0_TICK {
-  TickSystemClock();
+  lfo.Update();
+  lfoPin.set_pwm_value(lfo.Render());
+}
+
+void Init() {
+  // Set Timer1 to 4.901 kHz for nice smooth PWM
+  Timer<1>::set_mode(TIMER_PWM_PHASE_CORRECT);
+  Timer<1>::set_prescaler(2); 
+
+  lfoPin.set_mode(PWM_OUTPUT);
+
+  lfo.Reset(1221, 8, LFO_RAMP_DOWN);
+
+  // Start Timer0 at 1220.7 Hz for the main program loop
+  Timer<0>::set_mode (TIMER_NORMAL);
+  Timer<0>::set_prescaler(3);
+  Timer<0>::Start();
 }
 
 int main(void) {
   Boot(true);
-  lfo.Update();
-  led.set_mode(DIGITAL_OUTPUT);
-  while (1) {
-    led.High();
-    Delay(250);
-    led.Low();
-    Delay(250);
-  }
+  Init();
+  while (1) { }
 }

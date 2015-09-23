@@ -23,7 +23,7 @@
 namespace nm102 {
 
 enum LfoShape {
-  LFO_SQUARE_WAVE,
+  LFO_SQUARE,
   LFO_RAMP_DOWN,
   LFO_RAMP_UP,
   LFO_TRIANGLE,
@@ -36,7 +36,7 @@ enum LfoShape {
 class Lfo {
  public:
 
-  Lfo(uint16_t sample_rate = 1) : sample_rate_(sample_rate), shape_(LFO_SQUARE_WAVE), phase_(0) { 
+  Lfo(uint16_t sample_rate = 1) : sample_rate_(sample_rate), shape_(LFO_SQUARE), phase_(0) { 
     set_rate(8);
   }
 
@@ -56,13 +56,13 @@ class Lfo {
       case LFO_TRIANGLE:
         return (phase_ < 32767) ? ~static_cast<uint8_t>(phase_ >> 7) : phase_ >> 7;
 
-      case LFO_SQUARE_WAVE:
+      case LFO_SQUARE:
       default:
         return (phase_ < 32767) ? 255 : 0;
     }
   }
 
-  void Reset(uint16_t sample_rate, uint8_t rate, uint8_t shape = LFO_SQUARE_WAVE) {
+  void Reset(uint16_t sample_rate, uint8_t rate, uint8_t shape = LFO_SQUARE) {
     set_sample_rate(sample_rate);
     set_rate(rate);    
     set_shape(shape);
@@ -85,7 +85,7 @@ class Lfo {
   // Set rate in 1/8 hz
   void set_rate(uint8_t rate) {
     rate_ = rate;
-    phase_increment_ = (65536 * (rate_ / 8)) / sample_rate_;
+    phase_increment_ = ((65536 * rate_) >> 3) / sample_rate_;
   }
 
  private:
