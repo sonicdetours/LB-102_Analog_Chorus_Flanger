@@ -29,13 +29,12 @@ using namespace avrlib;
 using namespace nm102;
 
 Lfo lfo;
-DelayClock clock;
+DelayClock delayClock;
 
 
 TIMER_1_TICK {
   lfo.Update();
-  clock.set_prescaler(1);
-  clock.set_top(49);
+  delayClock.set_frequency(200000);
 }
 
 
@@ -46,7 +45,8 @@ void Init() {
   Timer<1>::set_prescaler(3);
   Timer<1>::Start();
 
-  clock.Init();
+  lfo.Reset(1221, 8, LFO_TRIANGLE);
+  delayClock.Init();
 }
 
 int main(void) {

@@ -13,7 +13,7 @@
 //
 // -----------------------------------------------------------------------------
 //
-// BBD clock.
+// Delay clock.
 //
 #ifndef NM102_DELAY_CLOCK_H_
 #define NM102_DELAY_CLOCK_H_
@@ -29,18 +29,30 @@ class DelayClock {
   DelayClock() {}
 
   void Init() {
-    // http://withinspecifications.30ohm.com/2014/02/20/Fast-PWM-on-AtMega328/
 
+    // http://withinspecifications.30ohm.com/2014/02/20/Fast-PWM-on-AtMega328/
     DDRD = 1 << PD3;
     TCCR2A = _BV(COM2A1) | _BV(COM2B1) | _BV(WGM21) | _BV(WGM20);
     TCCR2B = _BV(WGM22);
 
-    set_prescaler(2);
-    set_top(124); // 10 kHz = 100 us cycle
-
-    set_prescaler(1);
-    set_top(49); // 200 kHz = 5 us cycle
+    set_frequency(200000);
   }
+
+  // Set desired output clock frequency for MN3102 (10-200 kHz)
+  void set_frequency(uint32_t frequency) {
+      uint16_t top = 10000000 / frequency - 1;
+
+      if (top > 255) {
+        set_prescaler(2);
+        top = top >> 3;
+      } else {
+        set_prescaler(1);
+      }
+
+      set_top(top);        
+  }
+
+ private:
 
   void set_top(uint8_t value) {
     OCR2A = value;
@@ -57,8 +69,6 @@ class DelayClock {
         TCCR2B = _BV(WGM22) | (1 << CS20);
     }
   }
-
- private:
 
   DISALLOW_COPY_AND_ASSIGN(DelayClock);
 };
