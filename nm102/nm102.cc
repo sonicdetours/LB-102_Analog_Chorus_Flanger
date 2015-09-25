@@ -22,37 +22,35 @@
 #include "avrlib/boot.h"
 #include "avrlib/time.h"
 
-#include "Lfo.h"
+#include "lfo.h"
+#include "delay_clock.h"
 
 using namespace avrlib;
 using namespace nm102;
 
-NumberedGpio<9> lfoPin;
 Lfo lfo;
+DelayClock clock;
 
 
-TIMER_0_TICK {
+TIMER_1_TICK {
   lfo.Update();
-  lfoPin.set_pwm_value(lfo.Render());
+  clock.set_prescaler(1);
+  clock.set_top(49);
 }
 
+
 void Init() {
-  // Set Timer1 to 4.901 kHz for nice smooth PWM
-  Timer<1>::set_mode(TIMER_PWM_PHASE_CORRECT);
-  Timer<1>::set_prescaler(2); 
 
-  lfoPin.set_mode(PWM_OUTPUT);
+  // Start Timer1 at 1220.7 Hz for the main program loop
+  Timer<1>::set_mode (TIMER_NORMAL);
+  Timer<1>::set_prescaler(3);
+  Timer<1>::Start();
 
-  lfo.Reset(1221, 8, LFO_RAMP_DOWN);
-
-  // Start Timer0 at 1220.7 Hz for the main program loop
-  Timer<0>::set_mode (TIMER_NORMAL);
-  Timer<0>::set_prescaler(3);
-  Timer<0>::Start();
+  clock.Init();
 }
 
 int main(void) {
-  Boot(true);
+  Boot(false);
   Init();
   while (1) { }
 }
