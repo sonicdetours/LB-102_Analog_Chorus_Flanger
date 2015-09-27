@@ -29,12 +29,14 @@ using namespace avrlib;
 using namespace nm102;
 
 Lfo lfo;
-DelayClock delayClock;
 
+DelayClock<2, 3, OCR2ARegister, OCR2BRegister> leftDelayClock;
+DelayClock<0, 5, OCR0ARegister, OCR0BRegister> rightDelayClock;
 
 TIMER_1_TICK {
   lfo.Update();
-  delayClock.set_frequency(200000);
+  leftDelayClock.set_frequency(200000);
+  rightDelayClock.set_frequency(200000);
 }
 
 
@@ -46,7 +48,9 @@ void Init() {
   Timer<1>::Start();
 
   lfo.Reset(1221, 8, LFO_TRIANGLE);
-  delayClock.Init();
+
+  leftDelayClock.Init();
+  rightDelayClock.Init();
 }
 
 int main(void) {

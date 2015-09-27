@@ -20,55 +20,52 @@
 
 #include "avrlib/base.h"
 #include "avrlib/gpio.h"
+#include "avrlib/gpio.h"
+
+using namespace avrlib;
 
 namespace nm102 {
 
-
+template<int timerNumber, int pinNumber, typename CompareRegisterA, typename CompareRegisterB>
 class DelayClock {
+
  public:
   DelayClock() {}
 
   void Init() {
+    clockPin.set_mode(DIGITAL_OUTPUT);
 
-    // http://withinspecifications.30ohm.com/2014/02/20/Fast-PWM-on-AtMega328/
-    DDRD = 1 << PD3;
-    TCCR2A = _BV(COM2A1) | _BV(COM2B1) | _BV(WGM21) | _BV(WGM20);
-    TCCR2B = _BV(WGM22);
+    timer.set_mode(
+      _BV(COM2A1) | _BV(COM2B1) | _BV(WGM21) | _BV(WGM20),
+      _BV(WGM22),
+      _BV(CS20)
+    );
 
     set_frequency(200000);
   }
 
   // Set desired output clock frequency for MN3102 (10-200 kHz)
   void set_frequency(uint32_t frequency) {
-      uint16_t top = 10000000 / frequency - 1;
+      uint16_t value = 10000000 / frequency - 1;
 
-      if (top > 255) {
-        set_prescaler(2);
-        top = top >> 3;
+      if (value > 255) {
+        timer.set_prescaler(2);
+        value = value >> 3;
       } else {
-        set_prescaler(1);
+        timer.set_prescaler(1);
       }
 
-      set_top(top);        
+      compareRegisterA = value;
+      compareRegisterB = value >> 1;
   }
 
  private:
 
-  void set_top(uint8_t value) {
-    OCR2A = value;
-    OCR2B = value >> 1;
-  }
+  NumberedGpio<pinNumber> clockPin;
+  Timer<timerNumber> timer;
 
-  void set_prescaler(uint8_t value) {
-    switch(value) {
-      case 2 : // 8
-        TCCR2B = _BV(WGM22) | (1 << CS21);
-        break;
-      case 1 : // 1
-      default :
-        TCCR2B = _BV(WGM22) | (1 << CS20);
-    }
-  }
+  CompareRegisterA compareRegisterA;
+  CompareRegisterB compareRegisterB;
 
   DISALLOW_COPY_AND_ASSIGN(DelayClock);
 };

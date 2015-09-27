@@ -1,0 +1,177 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L ATMEGA328-P IC?
+U 1 1 5606F530
+P 4000 2400
+F 0 "IC?" H 3250 3650 40  0000 L BNN
+F 1 "ATMEGA328-P" H 4400 1000 40  0000 L BNN
+F 2 "DIL28" H 4000 2400 30  0000 C CIN
+F 3 "" H 4000 2400 60  0000 C CNN
+	1    4000 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L LCD16X2 DS?
+U 1 1 5606F6B6
+P 7450 1550
+F 0 "DS?" H 6650 1950 40  0000 C CNN
+F 1 "LCD16X2" H 8150 1950 40  0000 C CNN
+F 2 "WC1602A" H 7450 1500 35  0000 C CIN
+F 3 "" H 7450 1550 60  0000 C CNN
+	1    7450 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L BARREL_JACK CON?
+U 1 1 5606F6F8
+P 1600 1450
+F 0 "CON?" H 1600 1700 60  0000 C CNN
+F 1 "BARREL_JACK" H 1600 1250 60  0000 C CNN
+F 2 "" H 1600 1450 60  0000 C CNN
+F 3 "" H 1600 1450 60  0000 C CNN
+	1    1600 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L DIN_5 P?
+U 1 1 5606F725
+P 1900 2550
+F 0 "P?" H 1900 2550 50  0000 C CNN
+F 1 "DIN_5" H 1900 2400 50  0000 C CNN
+F 2 "" H 1900 2550 60  0000 C CNN
+F 3 "" H 1900 2550 60  0000 C CNN
+	1    1900 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L POT RV?
+U 1 1 5606F76C
+P 2850 5700
+F 0 "RV?" H 2850 5600 50  0000 C CNN
+F 1 "POT" H 2850 5700 50  0000 C CNN
+F 2 "" H 2850 5700 60  0000 C CNN
+F 3 "" H 2850 5700 60  0000 C CNN
+	1    2850 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L POT RV?
+U 1 1 5606F7C8
+P 3700 5700
+F 0 "RV?" H 3700 5600 50  0000 C CNN
+F 1 "POT" H 3700 5700 50  0000 C CNN
+F 2 "" H 3700 5700 60  0000 C CNN
+F 3 "" H 3700 5700 60  0000 C CNN
+	1    3700 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L POT RV?
+U 1 1 5606F801
+P 4600 5700
+F 0 "RV?" H 4600 5600 50  0000 C CNN
+F 1 "POT" H 4600 5700 50  0000 C CNN
+F 2 "" H 4600 5700 60  0000 C CNN
+F 3 "" H 4600 5700 60  0000 C CNN
+	1    4600 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH SW?
+U 1 1 5606F851
+P 5500 5700
+F 0 "SW?" H 5650 5810 50  0000 C CNN
+F 1 "SW" H 5500 5620 50  0000 C CNN
+F 2 "" H 5500 5700 60  0000 C CNN
+F 3 "" H 5500 5700 60  0000 C CNN
+	1    5500 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH SW?
+U 1 1 5606F8A8
+P 5550 6600
+F 0 "SW?" H 5700 6710 50  0000 C CNN
+F 1 "encoder_a" H 5550 6520 50  0000 C CNN
+F 2 "" H 5550 6600 60  0000 C CNN
+F 3 "" H 5550 6600 60  0000 C CNN
+	1    5550 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH SW?
+U 1 1 5606F8F0
+P 5550 6950
+F 0 "SW?" H 5700 7060 50  0000 C CNN
+F 1 "encoder_b" H 5550 6870 50  0000 C CNN
+F 2 "" H 5550 6950 60  0000 C CNN
+F 3 "" H 5550 6950 60  0000 C CNN
+	1    5550 6950
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH SW?
+U 1 1 5606F955
+P 5550 7250
+F 0 "SW?" H 5700 7360 50  0000 C CNN
+F 1 "encoder_sw" H 5550 7170 50  0000 C CNN
+F 2 "" H 5550 7250 60  0000 C CNN
+F 3 "" H 5550 7250 60  0000 C CNN
+	1    5550 7250
+	1    0    0    -1  
+$EndComp
+$Comp
+L DIL8 P?
+U 1 1 5607005B
+P 1900 3450
+F 0 "P?" H 1900 3700 60  0000 C CNN
+F 1 "6n137" V 1900 3450 50  0000 C CNN
+F 2 "" H 1900 3450 60  0000 C CNN
+F 3 "" H 1900 3450 60  0000 C CNN
+	1    1900 3450
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
